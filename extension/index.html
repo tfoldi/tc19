@@ -8,8 +8,60 @@
     </title>
     <script src="tableau.extensions.1.latest.min.js"></script>
     <script src="index.js"></script>
+    
+    <link
+      href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link href="style.css" rel="stylesheet" />
   </head>
   <body>
+      <header class="mdc-top-app-bar">
+          <div class="mdc-top-app-bar__row">
+            <section
+              class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start"
+            >
+              <span class="mdc-top-app-bar__title"
+                >Perform extra validation</span
+              >
+            </section>
+          </div>
+        </header>
+
+        <div class="options-container mdc-top-app-bar--fixed-adjust">
+        <div class="setting-field-container">
+            <div class="mdc-text-field text-field mdc-text-field--outlined">
+              <input
+                type="text"
+                id="userid"
+                class="mdc-text-field__input"
+              />
+              <div class="mdc-notched-outline mdc-notched-outline--upgraded">
+                <div class="mdc-notched-outline__leading"></div>
+                <div class="mdc-notched-outline__notch" style="">
+                  <label
+                    class="mdc-floating-label"
+                    for="text-field-outlined"
+                    style=""
+                    >User id</label
+                  >
+                </div>
+                <div class="mdc-notched-outline__trailing"></div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="setting-field-container">
+              <button id="validate" class="mdc-button mdc-button--raised" onclick="validate()" disabled>Validate</button>
+          </div>
+        </div>
+
     <div id="status">
         Tableau SDK uninitialized
     </div>

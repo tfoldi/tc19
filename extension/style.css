@@ -1,0 +1,88 @@
+body { margin: 0px; }
+
+.open-field-container button { width: 250px; }
+
+.options-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+
+.setting-field-container { margin-top: 20px; }
+.setting-field-container .mdc-text-field { width: 300px; }
+.setting-field-container button { width: 300px; }
+
+.openticket-container {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    grid-template-rows: auto auto auto auto auto;
+}
+
+.openticket-container .title-container {
+    grid-row: 1;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    margin-top: 20px;
+}
+.openticket-container .mdc-text-field { width: 100%;}
+.openticket-container .description-container { 
+    grid-row: 2;
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+.openticket-container .description-container textarea {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+}
+
+.openticket-container .mdc-select { margin-top: 20px; }
+.openticket-container .priority {
+    grid-row: 3;
+    grid-column: 1;
+}
+.openticket-container .impact {
+    grid-row: 3;
+    grid-column: 2;
+}
+.openticket-container .severity {
+    grid-row: 3;
+    grid-column: 3;
+}
+
+.openticket-container .checkbox-container{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    font-family: Roboto, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: 1.75rem;
+    font-weight: 400;
+    letter-spacing: .009375em;
+}
+.openticket-container .mdc-checkbox {
+    display: inline-block;
+}
+
+
+.openticket-container .submit-container {
+    grid-row: 4;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    margin-top: 20px;
+}
+
+.openticket-container .submit-container button {
+    width: 100%;
+}
+
+.openticket-container .submit-container .mdc-linear-progress {
+    
+}
+
+.error { color: red; }
