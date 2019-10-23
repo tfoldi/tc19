@@ -9,7 +9,7 @@ const BACKEND_ENDPOINT = "/backend/auth";
 
     var resp = await getUserInfo();
     console.log("UserInfo response!!", resp);
-    document.getElementById("userid").value = resp.id;
+    document.getElementById("username").value = resp.username;
     for (const el of document.querySelectorAll('.mdc-text-field')) {
       new mdc.textField.MDCTextField.attachTo(el);
     }
@@ -35,9 +35,9 @@ async function validate() {
   document.getElementById("validate").setAttribute("disabled", "true");
   document.getElementById("status").innerText = "Getting user info...";
   var userInfo = await getUserInfo();
-  var id = Number.parseInt(document.getElementById('userid').value);
-  if (id) {
-    userInfo.id = id;
+  var username = document.getElementById('username').value;
+  if (username) {
+    userInfo.username = username;
   }
   else {
     document.getElementById("status").innerText = "Invalid userid!";
