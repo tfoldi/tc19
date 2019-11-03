@@ -2,7 +2,7 @@
     const LOAD_MODULE_REQUEST_MESSAGE = 'LoadModule-Request';
     const LOAD_MODULE_RESPONSE_MESSAGE = 'LoadModule-Response';
 
-    tableau.extensions.initAddons = function (extension_list) {
+    tableau.extensions.initalizeAddonsAsync = function (extension_list) {
         return new Promise(function (resolve, reject) {
             
             // We can load multiple addons, separated by coma
@@ -25,7 +25,6 @@
                             event_id: LOAD_MODULE_REQUEST_MESSAGE,
                             data: extension
                         }, "*");
-                    resolve(extension);
                 };
                 document.head.appendChild(script);
 
