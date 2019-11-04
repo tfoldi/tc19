@@ -6,12 +6,14 @@
         return new Promise(function (resolve, reject) {
             
             // We can load multiple addons, separated by coma
-            // 
-            extension_list.split(/\s*,\s*/).forEach(function (extension) {
+            var extensions = extension_list.split(/\s*,\s*/);
+            extensions.split(/\s*,\s*/).forEach(function (extension) {
                 window.addEventListener('message', function (event) {
                     if (event.data && event.data.event_id === LOAD_MODULE_RESPONSE_MESSAGE) {
-                        // XXX: resolve only if all extensions are loaded
-                        resolve(extension);
+                        extensions.splice(extensions.indexOf(event.data.data),1);
+                        if (extensions.length == 0 ) {
+                            resolve(extension);
+                        }
                     }
                 });
 
