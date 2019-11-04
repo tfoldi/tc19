@@ -26,7 +26,7 @@ app.post('/auth', async function (request, res) {
  
   try {
   
-    var qry = await pool.query(`SELECT * FROM public.sessions WHERE session_id = $1::text AND user_id=$2::text`, [body.wg_session_id, body.user_id]);
+    var qry = await pool.query(`SELECT * FROM public.sessions WHERE session_id = $1::text AND user_id=$2::integer`, [body.wg_session_id, body.user_id]);
     if (qry.rowCount == 0) {
       respond(res, false);
       return;
