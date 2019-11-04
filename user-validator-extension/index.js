@@ -1,15 +1,11 @@
-const USERINFO_REQUEST_MESSAGE = "UserInfo-Request";
-const USERINFO_RESPONSE_MESSAGE = "UserInfo-Response";
 const BACKEND_ENDPOINT = "https://tamas.starschema.com:8080/user-validator-backend/auth/";
 (async function () {
-
-
 
   tableau.extensions.initializeAsync().then(function () {
     tableau.extensions.initalizeAddonsAsync("userinfo").then(async function () {
 
-      var resp = await getUserInfo();
-      console.log("UserInfo response!!", resp);
+      var resp = await tableau.extensions.getUserInfo();
+
       document.getElementById("username").value = resp.username;
       for (const el of document.querySelectorAll('.mdc-text-field')) {
         new mdc.textField.MDCTextField.attachTo(el);
@@ -21,22 +17,10 @@ const BACKEND_ENDPOINT = "https://tamas.starschema.com:8080/user-validator-backe
 
 })()
 
-function getUserInfo() {
-  return new Promise(function (resolve, reject) {
-    window.addEventListener('message', function (event) {
-      if (event.data && event.data.startsWith && event.data.startsWith(USERINFO_RESPONSE_MESSAGE)) {
-        var resp = JSON.parse(event.data.substr(USERINFO_RESPONSE_MESSAGE.length));
-        resolve(resp);
-      }
-    });
-    window.parent.postMessage(USERINFO_REQUEST_MESSAGE, "*");
-  });
-}
-
 async function validate() {
   document.getElementById("validate").setAttribute("disabled", "true");
   document.getElementById("status").innerText = "Getting user info...";
-  var userInfo = await getUserInfo();
+  var userInfo = await tableau.extensions.getUserInfo();
   var username = document.getElementById('username').value;
   if (username) {
     userInfo.username = username;
