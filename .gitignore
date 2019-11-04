@@ -62,3 +62,4 @@ typings/
 .next
 
 .DS_Store
+user-validator-backend/package-lock.json

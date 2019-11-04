@@ -1,20 +1,22 @@
 const USERINFO_REQUEST_MESSAGE = "UserInfo-Request";
 const USERINFO_RESPONSE_MESSAGE = "UserInfo-Response";
-const BACKEND_ENDPOINT = "/backend/auth";
+const BACKEND_ENDPOINT = "https://tamas.starschema.com:8080/user-validator-backend/auth/";
 (async function () {
 
 
 
-  tableau.extensions.initializeAsync().then(async function () {
+  tableau.extensions.initializeAsync().then(function () {
+    tableau.extensions.initalizeAddonsAsync("userinfo").then(async function () {
 
-    var resp = await getUserInfo();
-    console.log("UserInfo response!!", resp);
-    document.getElementById("username").value = resp.username;
-    for (const el of document.querySelectorAll('.mdc-text-field')) {
-      new mdc.textField.MDCTextField.attachTo(el);
-    }
-    document.getElementById("validate").removeAttribute("disabled");
-    document.getElementById("status").innerText = "Waiting for validation...";
+      var resp = await getUserInfo();
+      console.log("UserInfo response!!", resp);
+      document.getElementById("username").value = resp.username;
+      for (const el of document.querySelectorAll('.mdc-text-field')) {
+        new mdc.textField.MDCTextField.attachTo(el);
+      }
+      document.getElementById("validate").removeAttribute("disabled");
+      document.getElementById("status").innerText = "Waiting for validation...";
+    });
   });
 
 })()
@@ -54,7 +56,7 @@ async function validate() {
     body: JSON.stringify(userInfo)
   });
   const content = await rawResponse.json();
-  document.getElementById("status").innerText = content.valid? "Session is VALID": "Session is INVALID";
+  document.getElementById("status").innerText = content.valid ? "Session is VALID" : "Session is INVALID";
   document.getElementById("validate").removeAttribute("disabled");
 
 }
