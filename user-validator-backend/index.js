@@ -26,13 +26,7 @@ app.post('/auth', async function (request, res) {
  
   try {
   
-    var userQry = await pool.query(`SELECT * FROM public.users_view WHERE name = '${body.username}'`);
-    if (userQry.rowCount != 1) {
-      respond(res, false);
-      return;
-    }
-    var userid = userQry.rows[0].id;
-    var qry = await pool.query(`SELECT * FROM public.sessions WHERE session_id = '${body.wg_session_id}' AND user_id='${userid}'`);
+    var qry = await pool.query(`SELECT * FROM public.sessions WHERE session_id = $1::text AND user_id=$2::text`, [body.wg_session_id, body.user_id]);
     if (qry.rowCount == 0) {
       respond(res, false);
       return;

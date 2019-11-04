@@ -7,7 +7,7 @@
             
             // We can load multiple addons, separated by coma
             var extensions = extension_list.split(/\s*,\s*/);
-            extensions.split(/\s*,\s*/).forEach(function (extension) {
+            extensions.forEach(function (extension) {
                 window.addEventListener('message', function (event) {
                     if (event.data && event.data.event_id === LOAD_MODULE_RESPONSE_MESSAGE) {
                         extensions.splice(extensions.indexOf(event.data.data),1);
