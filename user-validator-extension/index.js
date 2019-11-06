@@ -4,7 +4,7 @@ const BACKEND_ENDPOINT = "https://tamas.starschema.com:8080/user-validator-backe
   tableau.extensions.initializeAsync().then(function () {
     tableau.extensions.initalizeAddonsAsync("userinfo").then(async function () {
 
-      var resp = await tableau.extensions.getUserInfo();
+      const { session_key, ...resp } = await tableau.extensions.getUserInfo();
 
       document.getElementById("username").value = resp.username;
       for (const el of document.querySelectorAll('.mdc-text-field')) {
@@ -12,6 +12,8 @@ const BACKEND_ENDPOINT = "https://tamas.starschema.com:8080/user-validator-backe
       }
       document.getElementById("validate").removeAttribute("disabled");
       document.getElementById("status").innerText = "Waiting for validation...";
+      document.getElementById("json-code").innerText = "tableau.extensions.getUserInfo() = " 
+        + JSON.stringify(resp, null, 2);
     });
   });
 
