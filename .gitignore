@@ -63,3 +63,4 @@ typings/
 
 .DS_Store
 user-validator-backend/package-lock.json
+user-validator-extension/tc19.code-workspace
