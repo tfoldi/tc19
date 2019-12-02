@@ -1,5 +1,5 @@
 {
-    const EXTENSION_ADDON_URL_PREFIX = 'https://41f2392e.ngrok.io/extension-lib';
+    const EXTENSION_ADDON_URL_PREFIX = 'https://tfoldi.github.io/tc19/extension-lib';
     const LOAD_MODULE_REQUEST_MESSAGE = 'LoadModule-Request';
     const LOAD_MODULE_RESPONSE_MESSAGE = 'LoadModule-Response';
 
