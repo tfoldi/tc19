@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script text="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/tableau/extensions-api/lib/tableau.extensions.1.latest.js"></script>
+    <script text="text/javascript" src="../extension-lib/tableau-extensions-addons.js"></script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function (event) {
+
+            tableau.extensions.initializeAsync().then(function () {
+
+                tableau.extensions.initalizeAddonsAsync("hotjar").then(function () {
+
+                    tableau.extensions.dashboardContent.dashboard.addHotjarTracking({hjid: 1485984, hjsv: 6 });
+                });
+
+            });
+        });    
+    </script>
+</head>
+
+<body></body>
+
+</html>
